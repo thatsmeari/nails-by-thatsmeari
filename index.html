@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="ro">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Nails by thatsmeari — thoughtful nail care and beautiful nail designs in Timișoara, Romania.">
+  <meta name="description" content="Nails by thatsmeari — servicii de manichiură și modele de unghii în Timișoara, România.">
   <title>Nails by thatsmeari | Timișoara</title>
   <style>
     :root {
@@ -24,6 +24,9 @@
     .btn { display:inline-block; background:var(--burgundy); color:white; padding:13px 21px; border-radius:999px; font-size:.9rem; border:1px solid var(--burgundy); transition:.2s; }
     .btn:hover { background:var(--ink); border-color:var(--ink); }
     .btn.secondary { background:transparent; color:var(--burgundy); }
+    .lang-switch { display:flex; align-items:center; gap:5px; white-space:nowrap; }
+    .lang-switch button { border:1px solid var(--line); background:transparent; color:var(--burgundy); border-radius:999px; padding:7px 10px; font-size:.78rem; cursor:pointer; }
+    .lang-switch button.active { background:var(--burgundy); color:white; border-color:var(--burgundy); }
     .hero { padding:70px 0 64px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
     .eyebrow { text-transform:uppercase; letter-spacing:.18em; color:var(--burgundy); font-size:.72rem; font-weight:bold; }
     h1,h2,h3 { font-family:Georgia,'Times New Roman',serif; font-weight:normal; line-height:1.1; }
@@ -87,8 +90,12 @@
      href="https://nailsbythatsmeari.setmore.com/jurmoni"
      target="_blank"
      rel="noopener noreferrer">
-    Book now
+    Rezervă acum
   </a>
+  <div class="lang-switch" aria-label="Alege limba">
+    <button type="button" data-lang="ro" class="active" aria-pressed="true">RO</button>
+    <button type="button" data-lang="en" aria-pressed="false">EN</button>
+  </div>
 </nav>
 
   </div>
@@ -101,7 +108,7 @@
       <h1>Your nails,<br>your moment.</h1>
       <p class="lead">Thoughtfully created nails, beautiful details, and a little time just for you. Discover your next favorite set at Nails by thatsmeari.</p>
       <div class="actions">
-        <a class="btn" href="#booking">Book an appointment ↗</a>
+        <a class="btn" href="https://nailsbythatsmeari.setmore.com/jurmoni" target="_blank" rel="noopener noreferrer">Book an appointment ↗</a>
         <a class="btn secondary" href="#gallery">Explore the gallery</a>
       </div>
     </div>
@@ -112,7 +119,7 @@
 
   <section class="section soft" id="services">
     <div class="wrap">
-      <div class="section-head"><div class="eyebrow">The service menu</div><h2>Find your perfect set.</h2><p>
+      <div class="section-head"><div class="eyebrow">The service menu</div><h2>Find your perfect set.</h2><p>Explorează serviciile de manichiură disponibile.</p></div>
       <div class="cards">
         <article class="card"><div class="photo-placeholder">Your manicure photo</div><div class="card-body"><h3>Gel polish</h3><p class="muted">A glossy, polished look in the shade you love.</p><p class="price">Add your price · Add duration</p></div></article>
         <article class="card"><div class="photo-placeholder">Your builder gel photo</div><div class="card-body"><h3>Builder gel</h3><p class="muted">Beautiful structure with a refined finish.</p><p class="price">Add your price · Add duration</p></div></article>
@@ -180,7 +187,6 @@
     </div>
   </section>
 
-
 <section class="cta" id="booking">
   <div class="eyebrow" style="color:#F3DADB">
     Your next set starts here
@@ -195,16 +201,125 @@
     Book an appointment ↗
   </a>
 </section>
-
 </main>
 
 <footer id="contact">
   <div class="wrap footer-row">
     <div><a class="brand" href="#home">nails by thatsmeari</a><br><span>Timisoara, Romania</span></div>
-    <div>Instagram: <a href="#" onclick="alert('Replace this link with your Instagram profile URL.'); return false;">@nails_by_thatsmeari</a><br>Email: craciunescuariana@yahoo.com</div>
+    <div>Instagram: <a href="https://www.instagram.com/nails_by_thatsmeari/" target="_blank" rel="noopener noreferrer">@nails_by_thatsmeari</a><br>Email: craciunescuariana@yahoo.com</div>
     <div>© <span id="year"></span> Nails by thatsmeari<br><span class="small-note">Made with care.</span></div>
   </div>
 </footer>
-<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Romanian is the default language. The English text is kept here so visitors can switch back.
+  const translations = {
+    "Services": "Servicii",
+    "Gallery": "Galerie",
+    "Colors": "Culori",
+    "Reviews": "Recenzii",
+    "Contact": "Contact",
+    "Book now": "Rezervă acum",
+    "Nail studio · Timișoara": "Studio de unghii · Timișoara",
+    "Your nails,": "Unghiile tale,",
+    "your moment.": "momentul tău.",
+    "Thoughtfully created nails, beautiful details, and a little time just for you. Discover your next favorite set at Nails by thatsmeari.": "Unghii realizate cu grijă, detalii frumoase și puțin timp doar pentru tine. Descoperă următorul tău set preferat la Nails by thatsmeari.",
+    "Book an appointment ↗": "Programează-te ↗",
+    "Explore the gallery": "Vezi galeria",
+    "A little luxury": "Puțin lux",
+    "at your fingertips": "la îndemâna ta",
+    "The service menu": "Lista de servicii",
+    "Find your perfect set.": "Alege setul perfect.",
+    "Explore the nail services available at Nails by thatsmeari.": "Descoperă serviciile de manichiură disponibile la Nails by thatsmeari.",
+    "Your manicure photo": "Fotografia manichiurii",
+    "Gel polish": "Ojă semipermanentă",
+    "A glossy, polished look in the shade you love.": "Un aspect lucios și îngrijit, în nuanța preferată.",
+    "Add your price · Add duration": "Adaugă prețul · Adaugă durata",
+    "Your builder gel photo": "Fotografia cu gel de construcție",
+    "Builder gel": "Gel de construcție",
+    "Beautiful structure with a refined finish.": "Formă frumoasă și finisaj elegant.",
+    "Your nail art photo": "Fotografia cu nail art",
+    "Nail art & extensions": "Nail art și extensii",
+    "Personalized designs, from subtle details to statement sets.": "Modele personalizate, de la detalii discrete la seturi îndrăznețe.",
+    "Made with care": "Realizat cu grijă",
+    "A closer look at the details.": "Detalii care fac diferența.",
+    "Real nail designs, made with love.": "Modele de unghii reale, create cu drag.",
+    "Nude and natural nail design": "Model de unghii nude și natural",
+    "French tips": "French",
+    "Chrome finish": "Finisaj chrome",
+    "Bold colors": "Culori îndrăznețe",
+    "Your color story": "Povestea culorilor tale",
+    "Which shade feels like you?": "Ce nuanță ți se potrivește?",
+    "Showcase your available polish colors and finishes. These are visual placeholders, not a real inventory.": "Prezintă culorile și finisajele disponibile. Acestea sunt exemple vizuale, nu o listă reală de produse.",
+    "Soft blush": "Roz pudrat",
+    "Rose pink": "Roz trandafiriu",
+    "Rose burgundy": "Burgundy",
+    "Milky ivory": "Ivoriu lăptos",
+    "Soft lilac": "Lila delicat",
+    "Sage": "Verde salvie",
+    "Kind words": "Păreri frumoase",
+    "Client love.": "Părerea clientelor.",
+    "Only publish genuine reviews from your clients, with their permission.": "Publică doar recenzii reale de la cliente, cu acordul lor.",
+    "Add a real client review here.": "Adaugă aici o recenzie reală de la o clientă.",
+    "— Client name or initials, with permission": "— Numele sau inițialele clientei, cu acordul ei",
+    "Add another genuine testimonial here.": "Adaugă aici încă o mărturie autentică.",
+    "Share what clients love about your work.": "Spune ce apreciază clientele la munca ta.",
+    "The details matter": "Detaliile contează",
+    "Products we love.": "Produsele pe care le apreciem.",
+    "Add the real brands and products you use, plus any relevant care or hygiene information you want clients to know.": "Adaugă mărcile și produsele pe care le folosești, precum și informații relevante despre îngrijire sau igienă.",
+    "Product photo": "Fotografie produs",
+    "Polish & color": "Ojă și culoare",
+    "Add the brands you work with.": "Adaugă mărcile cu care lucrezi.",
+    "Nail care": "Îngrijirea unghiilor",
+    "Share your favorite care products.": "Prezintă produsele tale preferate pentru îngrijire.",
+    "Studio photo": "Fotografie studio",
+    "Care & cleanliness": "Îngrijire și curățenie",
+    "Describe your actual hygiene and tool-care practices.": "Descrie practicile tale reale de igienă și îngrijire a instrumentelor.",
+    "Your next set starts here": "Următorul tău set începe aici",
+    "Ready for a little nail moment?": "Ești gata pentru un moment dedicat unghiilor tale?",
+    "Timisoara, Romania": "Timișoara, România",
+    "Instagram: ": "Instagram: ",
+    "Email: ": "Email: ",
+    "Made with care.": "Realizat cu grijă."
+  };
+
+  const textNodes = [];
+  const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  let node;
+  while ((node = walker.nextNode())) {
+    if (node.nodeValue.trim()) textNodes.push({ node, original: node.nodeValue });
+  }
+
+  function setLanguage(language) {
+    textNodes.forEach(({ node, original }) => {
+      const trimmed = original.trim();
+      const leading = original.match(/^\s*/)[0];
+      const trailing = original.match(/\s*$/)[0];
+      if (language === 'ro') {
+        node.nodeValue = leading + (translations[trimmed] || trimmed) + trailing;
+      } else {
+        const english = Object.keys(translations).find(key => translations[key] === trimmed);
+        node.nodeValue = leading + (english || trimmed) + trailing;
+      }
+    });
+    document.documentElement.lang = language;
+    document.querySelectorAll('[data-lang]').forEach(button => {
+      const active = button.dataset.lang === language;
+      button.classList.toggle('active', active);
+      button.setAttribute('aria-pressed', String(active));
+    });
+    const description = document.querySelector('meta[name="description"]');
+    if (description) description.content = language === 'ro'
+      ? 'Nails by thatsmeari — servicii de manichiură și modele de unghii în Timișoara, România.'
+      : 'Nails by thatsmeari — thoughtful nail care and beautiful nail designs in Timișoara, Romania.';
+    document.title = language === 'ro' ? 'Nails by thatsmeari | Timișoara' : 'Nails by thatsmeari | Timișoara';
+  }
+
+  document.querySelectorAll('[data-lang]').forEach(button => {
+    button.addEventListener('click', () => setLanguage(button.dataset.lang));
+  });
+  setLanguage('ro');
+</script>
 </body>
 </html>
