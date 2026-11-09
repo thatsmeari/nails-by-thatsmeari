@@ -51,11 +51,11 @@
     .gallery { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
     .gallery .photo-placeholder { min-height:250px; border-radius:12px; }
     .swatches { display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; }
-    .swatch { width:95px; text-align:center; color:var(--muted); font-size:.8rem; }
+    .swatch { width:110px; text-align:center; color:var(--muted); font-size:.8rem; }
     .swatch i { display:block; height:82px; border-radius:12px; margin-bottom:8px; border:1px solid #0000000a; }
     .swatch {  cursor:pointer;  transition:.2s;}
     .swatch:hover{  transform:translateY(-4px);}
-    .product-preview{  margin-top:30px;  background:white;  border:1px solid var(--line);  border-radius:16px;  padding:24px;}
+    .product-preview{  max-width:500px;  margin:30px auto 0;  background:white;  border:1px solid var(--line);  border-radius:16px;  padding:24px;}
     .product-preview h3{  text-align:center;  margin-bottom:20px;}
     .preview-gallery{  display:flex;  justify-content:center; gap:12px;  flex-wrap:wrap;  margin-bottom:20px;}
     .preview-gallery img{  width:120px;  height:120px;  object-fit:cover;  border-radius:12px;  border:1px solid var(--line);}
@@ -128,7 +128,7 @@
       <div class="art-note">A little luxury<br>at your fingertips</div>
     </div>
   </section>
-
+    <!-- ------------------------------------------SERVICII------------------------------------------------------------------------------------------------------------------------------------------------ -->
  <section class="section soft" id="services">
   <div class="wrap">
     <div class="section-head">
@@ -173,7 +173,7 @@
     </div>
   </div>
 </section>
-    <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!GALERIE!!!!! -->
+    <!-- ----------------------------------------------------------------------------------------------GALERIE--------------------------------------------------------------------------------------------------- -->
 
   
 <section class="section" id="gallery">
@@ -196,6 +196,7 @@
   </div>
 </section>
 
+    <!-- ----------------------------------------------------------------------------------------------CULORI--------------------------------------------------------------------------------------------------- -->
 
   <section class="section soft" id="colors">
     <div class="wrap">
@@ -206,7 +207,6 @@
 <div class="swatch"
 onclick="showProduct(
 'Soft Blush',
-'https://c.cdnmp.net/129534325/p/l/6/mega-base-cover-cream-victoria-vynn-8-ml-rubber-base~9178486.jpg',
 'https://c.cdnmp.net/129534325/p/l/7/mega-base-cover-cream-victoria-vynn-8-ml-rubber-base~8779377.jpg',
 'https://c.cdnmp.net/129534325/p/l/4/mega-base-cover-cream-victoria-vynn-8-ml-rubber-base~8779374.jpg'
 )">
@@ -224,10 +224,11 @@ onclick="showProduct(
   <div class="preview-gallery">
     <img id="preview-color" alt="Color sample">
     <img id="preview-nails" alt="Nail example">
-  <img id="preview-bottle" alt="Product bottle"></div></div></section>
+  </div></div></section>
 
   
-  
+     <!-- ----------------------------------------------------------------------------------------------REVIEW-URI--------------------------------------------------------------------------------------------------- -->
+
   <section class="section" id="reviews">
     <div class="wrap">
       <div class="section-head"><div class="eyebrow">Kind words</div><h2>Client love.</h2><p>Only publish genuine reviews from your clients, with their permission.</p></div>
@@ -276,8 +277,9 @@ onclick="showProduct(
 <script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Romanian is the default language. The English text is kept here so visitors can switch back.
-  const translations = {
+  //   ----------------------------------------------------------------------------------------------RO-EN---------------------------------------------------------------------------------------------------
+
+    const translations = {
     "Services": "Servicii",
     "Gallery": "Galerie",
     "Colors": "Culori",
@@ -347,6 +349,7 @@ onclick="showProduct(
     "Email: ": "Email: ",
     "Made with care.": "Realizat cu grijă."
   };
+    // ----------------------------------------------------------------------------------------------JAVASCRIPT--------------------------------------------------------------------------------------------------- -->
 
   const textNodes = [];
   const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
@@ -385,16 +388,11 @@ onclick="showProduct(
   });
   setLanguage('ro');
 
-function showProduct(name, bottle, color, nails) {
-
+function showProduct(name, color, nails) {
   document.getElementById("preview-title").textContent = name;
-
-  document.getElementById("preview-bottle").src = bottle;
   document.getElementById("preview-color").src = color;
   document.getElementById("preview-nails").src = nails;
-
   document.getElementById("product-preview").style.display = "block";
-
   document.getElementById("product-preview")
     .scrollIntoView({
       behavior: "smooth",
