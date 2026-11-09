@@ -52,13 +52,13 @@
     .gallery .photo-placeholder { min-height:250px; border-radius:12px; }
     .swatches { display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; }
     .swatch { width:110px; text-align:center; color:var(--muted); font-size:.8rem; }
-    .swatch i { display:block; height:82px; border-radius:12px; margin-bottom:8px; border:1px solid #0000000a; }
+    .swatch i { display:block; height:82px;   width:82px; border-radius:50px; margin:0 auto 8px;  border:2px solid rgba(0,0,0,.08); }
     .swatch {  cursor:pointer;  transition:.2s;}
     .swatch:hover{  transform:translateY(-4px);}
-    .product-preview{  max-width:500px;  margin:30px auto 0;  background:white;  border:1px solid var(--line);  border-radius:16px;  padding:24px;  opacity:0;  transform:translateY(10px);  transition:all .3s ease;}
+    .product-preview{  max-width:650px;  margin:30px auto 0;  background:white;  border:1px solid var(--line);  border-radius:16px;  padding:24px;  opacity:0;  transform:translateY(10px);  transition:all .3s ease;}
     .product-preview.show{  opacity:1;  transform:translateY(0);}    .product-preview h3{  text-align:center;  margin-bottom:20px;}
     .preview-gallery{  display:flex;  justify-content:center; gap:12px;  flex-wrap:wrap;  margin-bottom:20px;}
-    .preview-gallery img{  width:140px;  height:140px;  object-fit:cover;  border-radius:12px;  border:1px solid var(--line);}
+    .preview-gallery img{  width:180px;  height:180px;  object-fit:cover;  border-radius:12px;  border:1px solid var(--line);}
     .product-preview .btn{  display:block;  width:max-content;  margin:auto;}
 @media(max-width:760px){
   .preview-gallery{
