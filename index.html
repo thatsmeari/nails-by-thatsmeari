@@ -53,6 +53,18 @@
     .swatches { display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; }
     .swatch { width:95px; text-align:center; color:var(--muted); font-size:.8rem; }
     .swatch i { display:block; height:82px; border-radius:12px; margin-bottom:8px; border:1px solid #0000000a; }
+    .swatch{  cursor:pointer;  transition:.2s;}
+.swatch:hover{  transform:translateY(-4px);}
+.product-preview{  margin-top:30px;  background:white;  border:1px solid var(--line);  border-radius:16px;  padding:24px;}
+.product-preview h3{  text-align:center;  margin-bottom:20px;}
+.preview-gallery{  display:grid;  grid-template-columns:repeat(3,1fr);  gap:15px;  margin-bottom:20px;}
+.preview-gallery img{  width:100%;  aspect-ratio:1/1;  object-fit:cover;  border-radius:12px;  border:1px solid var(--line);}
+.product-preview .btn{  display:block;  width:max-content;  margin:auto;}
+@media(max-width:760px){
+  .preview-gallery{
+    grid-template-columns:1fr;
+  }
+}
     .quote { background:white; border:1px solid var(--line); padding:26px; border-radius:14px; }
     .quote p { font-family:Georgia,serif; font-size:1.25rem; margin-top:0; }
     .quote small { color:var(--muted); }
@@ -192,24 +204,23 @@
       </div>
       <div class="swatches">
 <div class="swatch"
-     onclick="showProduct(
-       'Soft Blush',
-       'https://c.cdnmp.net/129534325/p/l/6/mega-base-cover-cream-victoria-vynn-8-ml-rubber-base~9178486.jpg',
-       'https://c.cdnmp.net/129534325/p/l/7/mega-base-cover-cream-victoria-vynn-8-ml-rubber-base~8779377.jpg',
-       'https://c.cdnmp.net/129534325/p/l/4/mega-base-cover-cream-victoria-vynn-8-ml-rubber-base~8779374.jpg',
-       'https://www.pinknails.ro/mega-base-cover-cream-victoria-vynn-8-ml-rubber-base'
-     )">
+onclick="showProduct(
+'Soft Blush',
+'https://c.cdnmp.net/129534325/p/l/6/mega-base-cover-cream-victoria-vynn-8-ml-rubber-base~9178486.jpg',
+'https://c.cdnmp.net/129534325/p/l/7/mega-base-cover-cream-victoria-vynn-8-ml-rubber-base~8779377.jpg',
+'https://c.cdnmp.net/129534325/p/l/4/mega-base-cover-cream-victoria-vynn-8-ml-rubber-base~8779374.jpg',
+'https://www.pinknails.ro/mega-base-cover-cream-victoria-vynn-8-ml-rubber-base'
+)">
   <i style="background:#E9C8C8"></i>
   Soft blush
-</div>        <div class="swatch"><i style="background:#C58C91"></i>Rose pink</div>
+</div>
+        <div class="swatch"><i style="background:#C58C91"></i>Rose pink</div>
         <div class="swatch"><i style="background:#8D535D"></i>Rose burgundy</div>
         <div class="swatch"><i style="background:#F4EBDD"></i>Milky ivory</div>
         <div class="swatch"><i style="background:#B8A3C9"></i>Soft lilac</div>
         <div class="swatch"><i style="background:#A9B5A0"></i>Sage</div>
       </div>
-    </div>
-  </section>
-<div id="product-preview" class="product-preview" style="display:none;">
+      <div id="product-preview" class="product-preview" style="display:none;">
   <h3 id="preview-title"></h3>
 
   <div class="preview-gallery">
@@ -225,54 +236,10 @@
      View Product ↗
   </a>
 </div>
-.swatch{
-  cursor:pointer;
-  transition:.2s;
-}
 
-.swatch:hover{
-  transform:translateY(-4px);
-}
+    </div>
+  </section>
 
-.product-preview{
-  margin-top:30px;
-  background:white;
-  border:1px solid var(--line);
-  border-radius:16px;
-  padding:24px;
-}
-
-.product-preview h3{
-  text-align:center;
-  margin-bottom:20px;
-}
-
-.preview-gallery{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
-  margin-bottom:20px;
-}
-
-.preview-gallery img{
-  width:100%;
-  aspect-ratio:1/1;
-  object-fit:cover;
-  border-radius:12px;
-  border:1px solid var(--line);
-}
-
-.product-preview .btn{
-  display:block;
-  width:max-content;
-  margin:auto;
-}
-
-@media(max-width:760px){
-  .preview-gallery{
-    grid-template-columns:1fr;
-  }
-}
   
   
   <section class="section" id="reviews">
