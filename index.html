@@ -209,7 +209,72 @@
       </div>
     </div>
   </section>
+<div id="product-preview" class="product-preview" style="display:none;">
+  <h3 id="preview-title"></h3>
 
+  <div class="preview-gallery">
+    <img id="preview-bottle" alt="Bottle">
+    <img id="preview-color" alt="Color sample">
+    <img id="preview-nails" alt="Nails">
+  </div>
+
+  <a id="preview-link"
+     class="btn"
+     target="_blank"
+     rel="noopener noreferrer">
+     View Product ↗
+  </a>
+</div>
+.swatch{
+  cursor:pointer;
+  transition:.2s;
+}
+
+.swatch:hover{
+  transform:translateY(-4px);
+}
+
+.product-preview{
+  margin-top:30px;
+  background:white;
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:24px;
+}
+
+.product-preview h3{
+  text-align:center;
+  margin-bottom:20px;
+}
+
+.preview-gallery{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:15px;
+  margin-bottom:20px;
+}
+
+.preview-gallery img{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  border-radius:12px;
+  border:1px solid var(--line);
+}
+
+.product-preview .btn{
+  display:block;
+  width:max-content;
+  margin:auto;
+}
+
+@media(max-width:760px){
+  .preview-gallery{
+    grid-template-columns:1fr;
+  }
+}
+  
+  
   <section class="section" id="reviews">
     <div class="wrap">
       <div class="section-head"><div class="eyebrow">Kind words</div><h2>Client love.</h2><p>Only publish genuine reviews from your clients, with their permission.</p></div>
@@ -366,6 +431,26 @@
     button.addEventListener('click', () => setLanguage(button.dataset.lang));
   });
   setLanguage('ro');
+
+function showProduct(name, bottle, color, nails, link) {
+
+  document.getElementById("preview-title").textContent = name;
+
+  document.getElementById("preview-bottle").src = bottle;
+  document.getElementById("preview-color").src = color;
+  document.getElementById("preview-nails").src = nails;
+
+  document.getElementById("preview-link").href = link;
+
+  document.getElementById("product-preview").style.display = "block";
+
+  document.getElementById("product-preview")
+    .scrollIntoView({
+      behavior: "smooth",
+      block: "nearest"
+    });
+}
+  
 </script>
 </body>
 </html>
