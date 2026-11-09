@@ -58,7 +58,7 @@
     .product-preview{  max-width:500px;  margin:30px auto 0;  background:white;  border:1px solid var(--line);  border-radius:16px;  padding:24px;  opacity:0;  transform:translateY(10px);  transition:all .3s ease;}
     .product-preview.show{  opacity:1;  transform:translateY(0);}    .product-preview h3{  text-align:center;  margin-bottom:20px;}
     .preview-gallery{  display:flex;  justify-content:center; gap:12px;  flex-wrap:wrap;  margin-bottom:20px;}
-    .preview-gallery img{  width:120px;  height:120px;  object-fit:cover;  border-radius:12px;  border:1px solid var(--line);}
+    .preview-gallery img{  width:140px;  height:140px;  object-fit:cover;  border-radius:12px;  border:1px solid var(--line);}
     .product-preview .btn{  display:block;  width:max-content;  margin:auto;}
 @media(max-width:760px){
   .preview-gallery{
@@ -201,43 +201,32 @@
 
   <section class="section soft" id="colors">
     <div class="wrap">
-      <div class="section-head"><div class="eyebrow">Your color story</div><h2>Which shade feels like you?</h2>
-        <p>Showcase your available polish colors and finishes. These are visual placeholders, not a real inventory.</p>
-      </div>
+      <div class="section-head"><div class="eyebrow">Your color story</div><h2>Which shade feels like you?</h2></div>
+      
       <div class="swatches">
-<div class="swatch"
-onclick="showProduct(
-'https://c.cdnmp.net/129534325/p/l/7/mega-base-cover-cream-victoria-vynn-8-ml-rubber-base~8779377.jpg',
-'https://c.cdnmp.net/129534325/p/l/4/mega-base-cover-cream-victoria-vynn-8-ml-rubber-base~8779374.jpg'
-)">
-    <i style="background:#E9C8C8"></i>
-    Soft blush
-</div>
+    <!-- ----------------------------------------------------------------------------------------------milky white--------------------------------------------------------------------------------------------------- -->
 
-<div class="swatch"
+        <div class="swatch"
 onclick="showProduct(
-'https://c.cdnmp.net/129534325/p/l/7/mega-base-lily-pink-victoria-vynn-8-ml-rubber-base~8410187.jpg',
-'https://c.cdnmp.net/129534325/p/l/6/mega-base-lily-pink-victoria-vynn-8-ml-rubber-base~8410186.jpg'
+'https://c.cdnmp.net/129534325/p/l/8/mega-base-milky-white-victoria-vynn-8-ml-rubber-base~9112528.jpg',
+'https://c.cdnmp.net/129534325/p/l/5/mega-base-milky-white-victoria-vynn-8-ml-rubber-base~9112525.jpg'
 )">
-    <i style="background:#C58C91"></i>
-    Rose pink
-</div>        
+    <i style="background:#F4EBDD"></i>
+    Milky white
+</div>
+            <!-- ----------------------------------------------------------------------------------------------nude--------------------------------------------------------------------------------------------------- -->
+
+
 <div class="swatch"
 onclick="showProduct(
 'https://c.cdnmp.net/129534325/p/l/3/mega-base-cover-natural-victoria-vynn-8-ml-rubber-base~8779383.jpg',
 'https://c.cdnmp.net/129534325/p/l/6/mega-base-cover-natural-victoria-vynn-8-ml-rubber-base~8779386.jpg'
 )">
     <i style="background:#D8BAA8"></i>
-    Natural
+    Nude
 </div>
-<div class="swatch"
-onclick="showProduct(
-'https://c.cdnmp.net/129534325/p/l/8/mega-base-milky-white-victoria-vynn-8-ml-rubber-base~9112528.jpg',
-'https://c.cdnmp.net/129534325/p/l/5/mega-base-milky-white-victoria-vynn-8-ml-rubber-base~9112525.jpg'
-)">
-    <i style="background:#F4EBDD"></i>
-    Milky ivory
-</div>
+        
+            <!-- ----------------------------------------------------------------------------------------------tan--------------------------------------------------------------------------------------------------- -->
 
 <div class="swatch"
 onclick="showProduct(
@@ -247,6 +236,28 @@ onclick="showProduct(
     <i style="background:#C9A791"></i>
     Tan
 </div>  
+                  <!-- ----------------------------------------------------------------------------------------------soft blush-------------------------------------------------------------------------------------------------- -->
+  
+<div class="swatch"
+onclick="showProduct(
+'https://c.cdnmp.net/129534325/p/l/7/mega-base-cover-cream-victoria-vynn-8-ml-rubber-base~8779377.jpg',
+'https://c.cdnmp.net/129534325/p/l/4/mega-base-cover-cream-victoria-vynn-8-ml-rubber-base~8779374.jpg'
+)">
+    <i style="background:#E9C8C8"></i>
+    Soft blush
+</div>
+            <!-- ----------------------------------------------------------------------------------------------------roz--------------------------------------------------------------------------------------------- -->
+
+<div class="swatch"
+onclick="showProduct(
+'https://c.cdnmp.net/129534325/p/l/7/mega-base-lily-pink-victoria-vynn-8-ml-rubber-base~8410187.jpg',
+'https://c.cdnmp.net/129534325/p/l/6/mega-base-lily-pink-victoria-vynn-8-ml-rubber-base~8410186.jpg'
+)">
+    <i style="background:#C58C91"></i>
+    Rose pink
+</div>        
+
+
       </div>
       <div id="product-preview" class="product-preview" style="display:none;">
   <h3 id="preview-title"></h3>
@@ -350,7 +361,7 @@ onclick="showProduct(
     "Soft blush": "Roz pudrat",
     "Rose pink": "Roz trandafiriu",
     "Rose burgundy": "Burgundy",
-    "Milky ivory": "Ivoriu lăptos",
+    "Milky white": "Alb lăptos",
     "Soft lilac": "Lila delicat",
     "Sage": "Verde salvie",
     "Kind words": "Păreri frumoase",
