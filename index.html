@@ -208,11 +208,10 @@ onclick="showProduct(
 'Soft Blush',
 'https://c.cdnmp.net/129534325/p/l/6/mega-base-cover-cream-victoria-vynn-8-ml-rubber-base~9178486.jpg',
 'https://c.cdnmp.net/129534325/p/l/7/mega-base-cover-cream-victoria-vynn-8-ml-rubber-base~8779377.jpg',
-'https://c.cdnmp.net/129534325/p/l/4/mega-base-cover-cream-victoria-vynn-8-ml-rubber-base~8779374.jpg',
-'https://www.pinknails.ro/mega-base-cover-cream-victoria-vynn-8-ml-rubber-base'
+'https://c.cdnmp.net/129534325/p/l/4/mega-base-cover-cream-victoria-vynn-8-ml-rubber-base~8779374.jpg'
 )">
-  <i style="background:#E9C8C8"></i>
-  Soft blush
+    <i style="background:#E9C8C8"></i>
+    Soft blush
 </div>
         <div class="swatch"><i style="background:#C58C91"></i>Rose pink</div>
         <div class="swatch"><i style="background:#8D535D"></i>Rose burgundy</div>
@@ -222,23 +221,10 @@ onclick="showProduct(
       </div>
       <div id="product-preview" class="product-preview" style="display:none;">
   <h3 id="preview-title"></h3>
-
   <div class="preview-gallery">
-    <img id="preview-bottle" alt="Bottle">
     <img id="preview-color" alt="Color sample">
-    <img id="preview-nails" alt="Nails">
-  </div>
-
-  <a id="preview-link"
-     class="btn"
-     target="_blank"
-     rel="noopener noreferrer">
-     View Product ↗
-  </a>
-</div>
-
-    </div>
-  </section>
+    <img id="preview-nails" alt="Nail example">
+  <img id="preview-bottle" alt="Product bottle"></div></div></section>
 
   
   
@@ -399,15 +385,13 @@ onclick="showProduct(
   });
   setLanguage('ro');
 
-function showProduct(name, bottle, color, nails, link) {
+function showProduct(name, bottle, color, nails) {
 
   document.getElementById("preview-title").textContent = name;
 
   document.getElementById("preview-bottle").src = bottle;
   document.getElementById("preview-color").src = color;
   document.getElementById("preview-nails").src = nails;
-
-  document.getElementById("preview-link").href = link;
 
   document.getElementById("product-preview").style.display = "block";
 
