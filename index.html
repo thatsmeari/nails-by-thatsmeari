@@ -63,7 +63,7 @@
       <article class="card">
         <img src="semi.jpeg" alt="Gel polish manicure"
              style="width: 100%; aspect-ratio: 1 / 1; height: auto; object-fit: cover; border-radius: 12px;">
-        <div class="card-body">
+        <div class="card-">
           <h3>Gel polish</h3>
           <p class="muted">A glossy, polished look in the shade you love.</p>
           <p class="price">120 RON · 1h30</p>
@@ -73,7 +73,7 @@
       <article class="card">
         <img src="buildegel.jpeg" alt="Builder gel manicure"
              style="width: 100%; aspect-ratio: 1 / 1; height: auto; object-fit: cover; border-radius: 12px;">
-        <div class="card-body">
+        <div class="card-">
           <h3>Builder gel</h3>
           <p class="muted">Beautiful structure with a refined finish.
           </p>
@@ -84,7 +84,7 @@
       <article class="card">
         <img src="nailart.jpeg" alt="Nail art and extensions"
              style="width: 100%; aspect-ratio: 1 / 1; height: auto; object-fit: cover; border-radius: 12px;">
-        <div class="card-body">
+        <div class="card-">
           <h3>Nail art & extensions</h3>
           <p class="muted">Personalized designs, from subtle details to statement sets.</p>
           <p class="price">200 RON · 2h00+</p>
@@ -257,6 +257,26 @@ onclick="showProduct(
   </div>
 </footer>
 <script src="script.js" defer></script>
+<div class="ai-chat">
+  <button id="ai-toggle" type="button" aria-expanded="false">
+    Need help choosing a nail look?
+  </button>
 
+  <section id="ai-panel" class="ai-panel" hidden aria-label="AI nail stylist chat">
+    <div class="ai-header">
+      <strong>AI Nail Stylist</strong>
+      <button id="ai-close" type="button" aria-label="Close chat">×</button>
+    </div>
+
+    <div id="ai-messages" class="ai-messages" aria-live="polite">
+      <p class="ai-message">Tell me what look you want and I’ll suggest a service.</p>
+    </div>
+
+    <form id="ai-form">
+      <input id="ai-input" type="text" placeholder="Example: soft nude for work" maxlength="1000" />
+      <button type="submit">Send</button>
+    </form>
+  </section>
+</div>
 </body>
 </html>
