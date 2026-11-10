@@ -84,8 +84,8 @@ while ((node = walker.nextNode())) {
 function setLanguage(language) {
   textNodes.forEach(({ node, original }) => {
     const trimmed = original.trim();
-    const leading = original.match(/^\s*/)[0];
-    const trailing = original.match(/\s*$/)[0];
+    const leading = original.match(/^\\s*/)[0];
+    const trailing = original.match(/\\s*$/)[0];
 
     if (language === 'ro') {
       node.nodeValue = leading + (translations[trimmed] || trimmed) + trailing;
@@ -198,10 +198,4 @@ if (aiToggle && aiPanel && aiClose && aiMessages && aiForm && aiInput) {
 
       addAiMessage(data.reply || "Sorry, I couldn't get a reply.");
     } catch (error) {
-      addAiMessage("Sorry, the AI is unavailable right now. Please try again later.");
-    } finally {
-      aiInput.disabled = false;
-      aiInput.focus();
-    }
-  });
-}
+
