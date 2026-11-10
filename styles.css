@@ -74,16 +74,8 @@
     footer { padding:30px 0; }
     .footer-row { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; color:var(--muted); font-size:.88rem; }
     .small-note { font-size:.82rem; color:var(--muted); }
-    @media(max-width:760px) {
-      .nav { align-items:flex-start; flex-direction:column; gap:12px; }
-      nav { flex-wrap:wrap; gap:13px; font-size:.82rem; }
-      .hero { grid-template-columns:1fr; padding-top:44px; gap:28px; }
-      .hero-art { min-height:330px; }
-      .cards { grid-template-columns:1fr; }
-      .gallery { grid-template-columns:repeat(2,1fr); }
-      .gallery .photo-placeholder { min-height:180px; }
-      .section { padding:52px 0; }
-        .ai-chat {
+  
+.ai-chat {
   position: fixed;
   right: 20px;
   bottom: 20px;
@@ -174,4 +166,3 @@
     bottom: 12px;
   }
 }
-    }
