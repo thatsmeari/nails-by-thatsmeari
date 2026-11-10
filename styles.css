@@ -200,3 +200,54 @@ footer { padding:30px 0; }
 @media (max-width: 760px) {
   .preview-gallery { flex-direction:column; align-items:center; }
 }
+/* Mobile layout fixes */
+@media (max-width: 760px) {
+  html,
+  body {
+    width: 100%;
+    overflow-x: hidden;
+  }
+
+  .wrap {
+    width: calc(100% - 32px);
+  }
+
+  .nav {
+    align-items: stretch;
+  }
+
+  nav {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 10px 14px;
+  }
+
+  .hero {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .hero > * {
+    min-width: 0;
+  }
+
+  .gallery img,
+  .card img {
+    display: block;
+    max-width: 100%;
+  }
+
+  .ai-chat {
+    right: 12px;
+    bottom: 12px;
+    max-width: calc(100vw - 24px);
+  }
+
+  #ai-toggle {
+    max-width: calc(100vw - 24px);
+    white-space: normal;
+  }
+
+  .ai-panel {
+    max-width: calc(100vw - 24px);
+  }
+}
