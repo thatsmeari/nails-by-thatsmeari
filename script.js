@@ -118,7 +118,7 @@ function showProduct(color, nails) {
    preview.style.display = "block";
   preview.classList.add("show");
 }
-const AI_WORKER_URL = "https://nails-ai-assistant.YOUR-WORKER-SUBDOMAIN.workers.dev/chat";
+const AI_WORKER_URL = "https://nails-ai-assistant.craciunescuariana.workers.dev/";
 
 const aiToggle = document.getElementById("ai-toggle");
 const aiPanel = document.getElementById("ai-panel");
