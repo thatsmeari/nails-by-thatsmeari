@@ -1,4 +1,3 @@
-<script>
   document.getElementById('year').textContent = new Date().getFullYear();
 
   //   ----------------------------------------------------------------------------------------------RO-EN---------------------------------------------------------------------------------------------------
@@ -120,4 +119,3 @@ function showProduct(color, nails) {
   preview.classList.add("show");
 }
   
-</script>
