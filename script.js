@@ -90,12 +90,15 @@ function setLanguage(language) {
     if (language === 'ro') {
       node.nodeValue = leading + (translations[trimmed] || trimmed) + trailing;
     } else {
-      const english = Object.keys(translations).find(key => translations[key] === trimmed);
+      const english = Object.keys(translations).find(
+        key => translations[key] === trimmed
+      );
       node.nodeValue = leading + (english || trimmed) + trailing;
     }
   });
 
   document.documentElement.lang = language;
+
   document.querySelectorAll('[data-lang]').forEach(button => {
     const active = button.dataset.lang === language;
     button.classList.toggle('active', active);
@@ -109,12 +112,13 @@ function setLanguage(language) {
       : 'Nails by thatsmeari — thoughtful nail care and beautiful nail designs in Timișoara, Romania.';
   }
 
-  document.title = language === 'ro' ? 'Nails by thatsmeari | Timișoara' : 'Nails by thatsmeari | Timișoara';
+  document.title = 'Nails by thatsmeari | Timișoara';
 }
 
 document.querySelectorAll('[data-lang]').forEach(button => {
   button.addEventListener('click', () => setLanguage(button.dataset.lang));
 });
+
 setLanguage('ro');
 
 function showProduct(color, nails) {
@@ -140,7 +144,10 @@ if (aiToggle && aiPanel && aiClose && aiMessages && aiForm && aiInput) {
     const isOpen = aiPanel.hidden;
     aiPanel.hidden = !isOpen;
     aiToggle.setAttribute("aria-expanded", String(isOpen));
-    if (isOpen) aiInput.focus();
+
+    if (isOpen) {
+      aiInput.focus();
+    }
   });
 
   aiClose.addEventListener("click", () => {
@@ -151,17 +158,19 @@ if (aiToggle && aiPanel && aiClose && aiMessages && aiForm && aiInput) {
   function addAiMessage(text, isUser = false) {
     const item = document.createElement("p");
     item.className = "ai-message";
+
     if (isUser) {
       item.style.background = "#8D535D";
       item.style.color = "#fff";
       item.style.marginLeft = "18px";
     }
+
     item.textContent = text;
     aiMessages.appendChild(item);
     aiMessages.scrollTop = aiMessages.scrollHeight;
   }
 
-  aiForm.addEventListener("submit", async (event) => {
+  aiForm.addEventListener("submit", async event => {
     event.preventDefault();
 
     const value = aiInput.value.trim();
@@ -182,9 +191,12 @@ if (aiToggle && aiPanel && aiClose && aiMessages && aiForm && aiInput) {
       });
 
       const data = await response.json();
-      if (!response.ok) throw new Error(data.error || "AI request failed");
 
-      addAiMessage(data.reply);
+      if (!response.ok) {
+        throw new Error(data.error || "AI request failed");
+      }
+
+      addAiMessage(data.reply || "Sorry, I couldn't get a reply.");
     } catch (error) {
       addAiMessage("Sorry, the AI is unavailable right now. Please try again later.");
     } finally {
