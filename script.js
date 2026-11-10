@@ -118,4 +118,70 @@ function showProduct(color, nails) {
    preview.style.display = "block";
   preview.classList.add("show");
 }
+const AI_WORKER_URL = "https://nails-ai-assistant.YOUR-WORKER-SUBDOMAIN.workers.dev/chat";
+
+const aiToggle = document.getElementById("ai-toggle");
+const aiPanel = document.getElementById("ai-panel");
+const aiClose = document.getElementById("ai-close");
+const aiMessages = document.getElementById("ai-messages");
+const aiForm = document.getElementById("ai-form");
+const aiInput = document.getElementById("ai-input");
+
+aiToggle.addEventListener("click", () => {
+  const isOpen = aiPanel.hidden;
+  aiPanel.hidden = !isOpen;
+  aiToggle.setAttribute("aria-expanded", String(isOpen));
+  if (isOpen) aiInput.focus();
+});
+
+aiClose.addEventListener("click", () => {
+  aiPanel.hidden = true;
+  aiToggle.setAttribute("aria-expanded", "false");
+});
+
+function addAiMessage(text, isUser = false) {
+  const item = document.createElement("p");
+  item.className = "ai-message";
+  if (isUser) {
+    item.style.background = "#8D535D";
+    item.style.color = "#fff";
+    item.style.marginLeft = "18px";
+  }
+  item.textContent = text;
+  aiMessages.appendChild(item);
+  aiMessages.scrollTop = aiMessages.scrollHeight;
+}
+
+aiForm.addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const value = aiInput.value.trim();
+  if (!value) return;
+
+  addAiMessage(value, true);
+  aiInput.value = "";
+  aiInput.disabled = true;
+
+  try {
+    const response = await fetch(AI_WORKER_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        message: value,
+        language: document.documentElement.lang || "en"
+      })
+    });
+
+    const data = await response.json();
+    if (!response.ok) throw new Error(data.error || "AI request failed");
+
+    addAiMessage(data.reply);
+  } catch {
+    addAiMessage("Sorry, the AI is unavailable right now. Please try again later.");
+  } finally {
+    aiInput.disabled = false;
+    aiInput.focus();
+  }
+});
+const AI_WORKER_URL = "https://nails-ai-assistant.craciunescuariana.workers.dev/";
   
