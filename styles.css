@@ -1,0 +1,88 @@
+<style>
+    :root {
+      --blush:#F6E7E7; --ivory:#FFFCF9; --rose:#E9C4D6;
+      --burgundy:#8D535D; --ink:#443137; --muted:#79686C;
+      --line:#EAD9D9; --white:#fff;
+    }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--ivory); color:var(--ink); font-family:Arial,Helvetica,sans-serif; line-height:1.6; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(1120px, calc(100% - 40px)); margin:auto; }
+    header { position:sticky; top:0; z-index:5; background:rgba(255,252,249,.94); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); }
+    .nav { display:flex; justify-content:space-between; align-items:center; gap:24px; padding:17px 0; }
+    .brand { font-family:Georgia,'Times New Roman',serif; color:var(--burgundy); font-size:1.35rem; letter-spacing:-.03em; }
+    nav { display:flex; align-items:center; gap:22px; font-size:.88rem; }
+    nav a:hover { color:var(--burgundy); }
+    .btn { display:inline-block; background:var(--burgundy); color:white; padding:13px 21px; border-radius:999px; font-size:.9rem; border:1px solid var(--burgundy); transition:.2s; }
+    .btn:hover { background:var(--ink); border-color:var(--ink); }
+    .btn.secondary { background:transparent; color:var(--burgundy); }
+    .lang-switch { display:flex; align-items:center; gap:5px; white-space:nowrap; }
+    .lang-switch button { border:1px solid var(--line); background:transparent; color:var(--burgundy); border-radius:999px; padding:7px 10px; font-size:.78rem; cursor:pointer; }
+    .lang-switch button.active { background:var(--burgundy); color:white; border-color:var(--burgundy); }
+    .hero { padding:70px 0 64px; display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
+    .eyebrow { text-transform:uppercase; letter-spacing:.18em; color:var(--burgundy); font-size:.72rem; font-weight:bold; }
+    h1,h2,h3 { font-family:Georgia,'Times New Roman',serif; font-weight:normal; line-height:1.1; }
+    h1 { font-size:clamp(2.8rem,6vw,5.1rem); letter-spacing:-.055em; margin:18px 0; }
+    h2 { font-size:clamp(2rem,4vw,3rem); margin:10px 0 16px; letter-spacing:-.035em; }
+    .lead { color:var(--muted); font-size:1.08rem; max-width:480px; }
+    .actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:27px; }
+    .hero-art { min-height:470px; border-radius:48% 48% 12px 12px; background:linear-gradient(150deg,#F0D8D9,#E7C9C7 55%,#C99DA3); position:relative; overflow:hidden; display:flex; align-items:center; justify-content:center; padding:28px; }
+    .hero-art:before { content:""; position:absolute; width:68%; height:78%; border-radius:48% 48% 8px 8px; background:linear-gradient(145deg,#FFFCF9,#E8D2CE); bottom:-7%; left:16%; box-shadow:0 25px 60px #8d535d25; }
+    .hero-art:after { content:"✧"; position:absolute; top:12%; right:16%; font-size:3rem; color:#fff8f4; }
+    .art-note { position:relative; z-index:1; text-align:center; font-family:Georgia,serif; color:var(--burgundy); font-size:1.5rem; max-width:230px; }
+    .section { padding:72px 0; }
+    .section.soft { background:var(--blush); }
+    .section-head { max-width:620px; margin-bottom:30px; }
+    .section-head p,.muted { color:var(--muted); }
+    .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .card { background:white; border:1px solid var(--line); border-radius:14px; overflow:hidden; }
+    .photo-placeholder { min-height:220px; background:linear-gradient(135deg,#F7E9E7,#E7C6C9 55%,#B98791); display:flex; align-items:center; justify-content:center; color:#fff9f7; font-family:Georgia,serif; font-size:1.25rem; text-align:center; padding:20px; }
+    .card-photo {
+  display: block;
+  width: 100%;
+  height: 220px;          /* matches your old placeholder's min-height */
+  object-fit: contain;    /* use "cover" if you prefer cropped, full-bleed photos */
+  background: #fff;
+}
+    .card-body { padding:20px; }
+    .card h3 { font-size:1.45rem; margin:0 0 8px; }
+    .price { color:var(--burgundy); font-weight:bold; }
+    .gallery { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+    .gallery .photo-placeholder { min-height:250px; border-radius:12px; }
+    .swatches { display:flex; flex-wrap:wrap; gap:12px; margin-top:24px; }
+    .swatch { width:110px; text-align:center; color:var(--muted); font-size:.8rem; }
+    .swatch i { display:block; height:82px;   width:82px; border-radius:50px; margin:0 auto 8px;  border:2px solid rgba(0,0,0,.08); }
+    .swatch {  cursor:pointer;  transition:.2s;}
+    .swatch:hover{  transform:translateY(-4px);}
+    .product-preview{  max-width:650px;  margin:30px auto 0;  background:white;  border:1px solid var(--line);  border-radius:16px;  padding:24px;  opacity:0;  transform:translateY(10px);  transition:all .3s ease;}
+    .product-preview.show{  opacity:1;  transform:translateY(0);}    .product-preview h3{  text-align:center;  margin-bottom:20px;}
+    .preview-gallery{  display:flex;  justify-content:center; gap:12px;  flex-wrap:wrap;  margin-bottom:20px;}
+    .preview-gallery img{  width:180px;  height:180px;  object-fit:cover;  border-radius:12px;  border:1px solid var(--line);}
+    .product-preview .btn{  display:block;  width:max-content;  margin:auto;}
+@media(max-width:760px){
+  .preview-gallery{
+    flex-direction:column;
+    align-items:center;;
+  }
+}
+    .quote { background:white; border:1px solid var(--line); padding:26px; border-radius:14px; }
+    .quote p { font-family:Georgia,serif; font-size:1.25rem; margin-top:0; }
+    .quote small { color:var(--muted); }
+    .cta { text-align:center; background:var(--burgundy); color:white; padding:64px 24px; }
+    .cta p { color:#F8EDEF; }
+    .cta .btn { background:white; color:var(--burgundy); border-color:white; margin-top:12px; }
+    footer { padding:30px 0; }
+    .footer-row { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; color:var(--muted); font-size:.88rem; }
+    .small-note { font-size:.82rem; color:var(--muted); }
+    @media(max-width:760px) {
+      .nav { align-items:flex-start; flex-direction:column; gap:12px; }
+      nav { flex-wrap:wrap; gap:13px; font-size:.82rem; }
+      .hero { grid-template-columns:1fr; padding-top:44px; gap:28px; }
+      .hero-art { min-height:330px; }
+      .cards { grid-template-columns:1fr; }
+      .gallery { grid-template-columns:repeat(2,1fr); }
+      .gallery .photo-placeholder { min-height:180px; }
+      .section { padding:52px 0; }
+    }
+  </style>
