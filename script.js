@@ -185,8 +185,8 @@ if (aiToggle && aiPanel && aiClose && aiMessages && aiForm && aiInput) {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          message: value,
-          language: document.documentElement.lang || "en"
+            message: value
+
         })
       });
 
