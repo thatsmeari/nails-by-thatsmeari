@@ -68,8 +68,7 @@ const translations = {
   "Timisoara, Romania": "Timișoara, România",
   "Instagram: ": "Instagram: ",
   "Email: ": "Email: ",
-  "Made with care.": "Realizat cu grijă.",
-  "Need help choosing a nail look?": "Ai nevoie de ajutor să alegi un model de unghii?"
+  "Made with care.": "Realizat cu grijă."
 };
 
 const textNodes = [];
@@ -91,7 +90,10 @@ function setLanguage(language) {
     if (language === 'ro') {
       node.nodeValue = leading + (translations[trimmed] || trimmed) + trailing;
     } else {
-      node.nodeValue = leading + trimmed + trailing;
+      const english = Object.keys(translations).find(
+        key => translations[key] === trimmed
+      );
+      node.nodeValue = leading + (english || trimmed) + trailing;
     }
   });
 
