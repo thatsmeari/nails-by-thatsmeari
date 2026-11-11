@@ -11,7 +11,7 @@ const translations = {
   "Nail studio · Timișoara": "Studio de unghii · Timișoara",
   "Your nails,": "Unghiile tale,",
   "your moment.": "momentul tău.",
-  "Thoughtfully created nails, beautiful details, and a little time just for you. Discover your next favorite set at Nails by thatsmeari.": "Unghii realizate cu grijă, detalii frumoase și puțin timp doar pentru tine. Descoperă următorul tău set preferat la Nails by thatsmeari.",
+  "Thoughtfully created nails, beautiful details, and a little time just for you. Discover your next favorite set at Nails by thatsmeari.": "Unghii realizate cu grijă, detalii frumoase și puțin lux la îndemâna ta.",
   "Book an appointment ↗": "Programează-te ↗",
   "Explore the gallery": "Vezi galeria",
   "A little luxury": "Puțin lux",
@@ -84,8 +84,8 @@ while ((node = walker.nextNode())) {
 function setLanguage(language) {
   textNodes.forEach(({ node, original }) => {
     const trimmed = original.trim();
-    const leading = original.match(/^\\s*/)[0];
-    const trailing = original.match(/\\s*$/)[0];
+    const leading = original.match(/^\s*/)[0];
+    const trailing = original.match(/\s*$/)[0];
 
     if (language === 'ro') {
       node.nodeValue = leading + (translations[trimmed] || trimmed) + trailing;
@@ -198,4 +198,11 @@ if (aiToggle && aiPanel && aiClose && aiMessages && aiForm && aiInput) {
 
       addAiMessage(data.reply || "Sorry, I couldn't get a reply.");
     } catch (error) {
-
+      console.error(error);
+      addAiMessage("Sorry, I couldn't get a reply right now.");
+    } finally {
+      aiInput.disabled = false;
+      aiInput.focus();
+    }
+  });
+}
