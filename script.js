@@ -68,9 +68,8 @@ const translations = {
   "Timisoara, Romania": "Timișoara, România",
   "Instagram: ": "Instagram: ",
   "Email: ": "Email: ",
-  "Made with care.": "Realizat cu grijă."
-  "Need help choosing a nail look?.": "Ai nevoie de ajutor?."
-
+  "Made with care.": "Realizat cu grijă.",
+  "Need help choosing a nail look?": "Ai nevoie de ajutor să alegi un model de unghii?"
 };
 
 const textNodes = [];
@@ -90,5 +89,118 @@ function setLanguage(language) {
     const trailing = original.match(/\s*$/)[0];
 
     if (language === 'ro') {
-      node.nodeValue = leading + (
-
+      node.nodeValue = leading + (translations[trimmed] || trimmed) + trailing;
+    } else {
+      node.nodeValue = leading + trimmed + trailing;
+    }
+  });
+
+  document.documentElement.lang = language;
+
+  document.querySelectorAll('[data-lang]').forEach(button => {
+    const active = button.dataset.lang === language;
+    button.classList.toggle('active', active);
+    button.setAttribute('aria-pressed', String(active));
+  });
+
+  const description = document.querySelector('meta[name="description"]');
+  if (description) {
+    description.content = language === 'ro'
+      ? 'Nails by thatsmeari — servicii de manichiură și modele de unghii în Timișoara, România.'
+      : 'Nails by thatsmeari — thoughtful nail care and beautiful nail designs in Timișoara, Romania.';
+  }
+
+  document.title = 'Nails by thatsmeari | Timișoara';
+}
+
+document.querySelectorAll('[data-lang]').forEach(button => {
+  button.addEventListener('click', () => setLanguage(button.dataset.lang));
+});
+
+setLanguage('ro');
+
+function showProduct(color, nails) {
+  document.getElementById("preview-color").src = color;
+  document.getElementById("preview-nails").src = nails;
+
+  const preview = document.getElementById("product-preview");
+  preview.style.display = "block";
+  preview.classList.add("show");
+}
+
+const AI_WORKER_URL = "https://nails-ai-assistant.craciunescuariana.workers.dev/chat";
+
+const aiToggle = document.getElementById("ai-toggle");
+const aiPanel = document.getElementById("ai-panel");
+const aiClose = document.getElementById("ai-close");
+const aiMessages = document.getElementById("ai-messages");
+const aiForm = document.getElementById("ai-form");
+const aiInput = document.getElementById("ai-input");
+
+if (aiToggle && aiPanel && aiClose && aiMessages && aiForm && aiInput) {
+  aiToggle.addEventListener("click", () => {
+    const isOpen = aiPanel.hidden;
+    aiPanel.hidden = !isOpen;
+    aiToggle.setAttribute("aria-expanded", String(isOpen));
+
+    if (isOpen) {
+      aiInput.focus();
+    }
+  });
+
+  aiClose.addEventListener("click", () => {
+    aiPanel.hidden = true;
+    aiToggle.setAttribute("aria-expanded", "false");
+  });
+
+  function addAiMessage(text, isUser = false) {
+    const item = document.createElement("p");
+    item.className = "ai-message";
+
+    if (isUser) {
+      item.style.background = "#8D535D";
+      item.style.color = "#fff";
+      item.style.marginLeft = "18px";
+    }
+
+    item.textContent = text;
+    aiMessages.appendChild(item);
+    aiMessages.scrollTop = aiMessages.scrollHeight;
+  }
+
+  aiForm.addEventListener("submit", async event => {
+    event.preventDefault();
+
+    const value = aiInput.value.trim();
+    if (!value) return;
+
+    addAiMessage(value, true);
+    aiInput.value = "";
+    aiInput.disabled = true;
+
+    try {
+      const response = await fetch(AI_WORKER_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: value,
+          language: document.documentElement.lang || "en"
+        })
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "AI request failed");
+      }
+
+      addAiMessage(data.reply || "Sorry, I couldn't get a reply.");
+    } catch (error) {
+      console.error(error);
+      addAiMessage("Sorry, I couldn't get a reply right now.");
+    } finally {
+      aiInput.disabled = false;
+      aiInput.focus();
+    }
+  });
+}
