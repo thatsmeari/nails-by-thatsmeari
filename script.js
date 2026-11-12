@@ -68,7 +68,7 @@ const translations = {
   "Timisoara, Romania": "Timișoara, România",
   "Instagram: ": "Instagram: ",
   "Email: ": "Email: ",
-  "Made with care.": "Realizat cu grijă."
+  "Made with care.": "Realizat cu grijă.",
   "Need help choosing a nail look?": "Ai nevoie de ajutor să alegi un model de unghii?",
 };
 
@@ -117,16 +117,6 @@ function setLanguage(language) {
 
   document.title = 'Nails by thatsmeari | Timișoara';
 }
-
-  const description = document.querySelector('meta[name="description"]');
-  if (description) {
-    description.content = language === 'ro'
-      ? 'Nails by thatsmeari — servicii de manichiură și modele de unghii în Timișoara, România.'
-      : 'Nails by thatsmeari — thoughtful nail care and beautiful nail designs in Timișoara, Romania.';
-  }
-
-  document.title = 'Nails by thatsmeari | Timișoara';
-
 
 document.querySelectorAll('[data-lang]').forEach(button => {
   button.addEventListener('click', () => setLanguage(button.dataset.lang));
