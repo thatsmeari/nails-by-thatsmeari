@@ -143,8 +143,11 @@ const aiButtonLabels = {
 };
 
 function syncAiButtonLanguage(language = document.documentElement.lang || "ro") {
-  if (aiToggle) {
-    aiToggle.textContent = aiButtonLabels[language] || aiButtonLabels.en;
+  const button = document.getElementById("ai-toggle");
+  if (button) {
+    button.textContent = language === "ro"
+      ? "Ai nevoie de ajutor să alegi un model de unghii?"
+      : "Need help choosing a nail look?";
   }
 }
 const aiPanel = document.getElementById("ai-panel");
