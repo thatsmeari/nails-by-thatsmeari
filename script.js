@@ -68,12 +68,12 @@ const translations = {
   "Timisoara, Romania": "Timișoara, România",
   "Instagram: ": "Instagram: ",
   "Email: ": "Email: ",
-  "AI Nail Stylist": "Sitilist AI.",
+  "AI Nail Stylist": "Stilist AI",
   "Tell me what look you want and I’ll suggest a service.": "Spune-mi ce look îți dorești și îți voi recomanda un serviciu.",
   "Example: soft nude for work": "Exemplu: nuanță nude discretă pentru serviciu",
-  "Made with care.": "Realizat cu grijă.",
   "Send": "Trimite",
   "Need help choosing a nail look?": "Ai nevoie de ajutor să alegi un model de unghii?",
+  "Made with care.": "Realizat cu grijă."
 };
 
 const textNodes = [];
@@ -81,8 +81,17 @@ const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
 let node;
 
 while ((node = walker.nextNode())) {
-  if (node.nodeValue.trim()) {
+  if (node.nodeValue && node.nodeValue.trim()) {
     textNodes.push({ node, original: node.nodeValue });
+  }
+}
+
+function syncAiButtonLanguage(language = document.documentElement.lang || "ro") {
+  const button = document.getElementById("ai-toggle");
+  if (button) {
+    button.textContent = language === "ro"
+      ? "Ai nevoie de ajutor să alegi un model de unghii?"
+      : "Need help choosing a nail look?";
   }
 }
 
@@ -92,7 +101,7 @@ function setLanguage(language) {
     const leading = original.match(/^\s*/)[0];
     const trailing = original.match(/\s*$/)[0];
 
-    if (language === 'ro') {
+    if (language === "ro") {
       node.nodeValue = leading + (translations[trimmed] || trimmed) + trailing;
     } else {
       const english = Object.keys(translations).find(
@@ -114,12 +123,12 @@ function setLanguage(language) {
 
   const description = document.querySelector('meta[name="description"]');
   if (description) {
-    description.content = language === 'ro'
-      ? 'Nails by thatsmeari — servicii de manichiură și modele de unghii în Timișoara, România.'
-      : 'Nails by thatsmeari — thoughtful nail care and beautiful nail designs in Timișoara, Romania.';
+    description.content = language === "ro"
+      ? "Nails by thatsmeari — servicii de manichiură și modele de unghii în Timișoara, România."
+      : "Nails by thatsmeari — thoughtful nail care and beautiful nail designs in Timișoara, Romania.";
   }
 
-  document.title = 'Nails by thatsmeari | Timișoara';
+  document.title = "Nails by thatsmeari | Timișoara";
 }
 
 document.querySelectorAll('[data-lang]').forEach(button => {
@@ -140,20 +149,6 @@ function showProduct(color, nails) {
 const AI_WORKER_URL = "https://nails-ai-assistant.craciunescuariana.workers.dev/chat";
 
 const aiToggle = document.getElementById("ai-toggle");
-
-const aiButtonLabels = {
-  ro: "Ai nevoie de ajutor să alegi un model de unghii?",
-  en: "Need help choosing a nail look?"
-};
-
-function syncAiButtonLanguage(language = document.documentElement.lang || "ro") {
-  const button = document.getElementById("ai-toggle");
-  if (button) {
-    button.textContent = language === "ro"
-      ? "Ai nevoie de ajutor să alegi un model de unghii?"
-      : "Need help choosing a nail look?";
-  }
-}
 const aiPanel = document.getElementById("ai-panel");
 const aiClose = document.getElementById("ai-close");
 const aiMessages = document.getElementById("ai-messages");
@@ -203,20 +198,12 @@ if (aiToggle && aiPanel && aiClose && aiMessages && aiForm && aiInput) {
 
     try {
       const response = await fetch(AI_WORKER_URL, {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify({
-    message: `
-      Detect the language of the user's message and reply in that same language.
-      If the user writes in Romanian, answer in Romanian.
-      If the user writes in English, answer in English.
-      Do not translate the user's message; respond naturally in their language.
-
-      User message:
-      ${value}
-    `
-  })
-});
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: value
+        })
+      });
 
       const data = await response.json();
 
@@ -225,15 +212,13 @@ if (aiToggle && aiPanel && aiClose && aiMessages && aiForm && aiInput) {
       }
 
       addAiMessage(data.reply || "Sorry, I couldn't get a reply.");
-        } catch (error) {
+    } catch (error) {
       console.error(error);
-      addAiMessage(
-        response && response.status === 503
-          ? "The AI is very busy right now. Please try again in a moment."
-          : "Sorry, I couldn't get a reply right now."
-      );
+      const message = error instanceof Error
+        ? error.message
+        : "Please try again in a moment.";
+      addAiMessage(`I couldn't get a reply: ${message}`);
     } finally {
-
       aiInput.disabled = false;
       aiInput.focus();
     }
