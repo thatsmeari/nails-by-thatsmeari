@@ -125,7 +125,7 @@ function setLanguage(language) {
   }
 
   document.title = 'Nails by thatsmeari | Timișoara';
-}
+
 
 document.querySelectorAll('[data-lang]').forEach(button => {
   button.addEventListener('click', () => setLanguage(button.dataset.lang));
