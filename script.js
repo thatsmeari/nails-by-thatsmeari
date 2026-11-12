@@ -69,6 +69,7 @@ const translations = {
   "Instagram: ": "Instagram: ",
   "Email: ": "Email: ",
   "Made with care.": "Realizat cu grijă."
+  "Need help choosing a nail look?": "Ai nevoie de ajutor să alegi un model de unghii?",
 };
 
 const textNodes = [];
