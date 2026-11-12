@@ -68,7 +68,11 @@ const translations = {
   "Timisoara, Romania": "Timișoara, România",
   "Instagram: ": "Instagram: ",
   "Email: ": "Email: ",
+  "AI Nail Stylist": "Sitilist AI.",
+  "Tell me what look you want and I’ll suggest a service.": "Spune-mi ce look îți dorești și îți voi recomanda un serviciu.",
+  "Example: soft nude for work": "Exemplu: nuanță nude discretă pentru serviciu",
   "Made with care.": "Realizat cu grijă.",
+  "Send": "Trimite",
   "Need help choosing a nail look?": "Ai nevoie de ajutor să alegi un model de unghii?",
 };
 
