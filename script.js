@@ -221,10 +221,15 @@ if (aiToggle && aiPanel && aiClose && aiMessages && aiForm && aiInput) {
       }
 
       addAiMessage(data.reply || "Sorry, I couldn't get a reply.");
-    } catch (error) {
+        } catch (error) {
       console.error(error);
-      addAiMessage("Sorry, I couldn't get a reply right now.");
+      addAiMessage(
+        response && response.status === 503
+          ? "The AI is very busy right now. Please try again in a moment."
+          : "Sorry, I couldn't get a reply right now."
+      );
     } finally {
+
       aiInput.disabled = false;
       aiInput.focus();
     }
